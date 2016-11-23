@@ -10,7 +10,7 @@ public class DoorActivate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        	
 	}
 
     public void OnTriggerEnter(Collider col)
@@ -18,13 +18,12 @@ public class DoorActivate : MonoBehaviour {
         if (col.gameObject.name == "Player")
         {
             Debug.Log("True");
-            //Emmettre un effet sonore ?
-
-            //Autoriser l'acces à la montagne
-            Destroy(door);
-            
-
-            //Lancer la musique ?
+            //Emmettre un effet sonore
+            door.GetComponent<AudioSource>().Play();
+            //Supprimer la porte
+            door.GetComponent<MeshRenderer>().enabled = false;
+            door.GetComponent<BoxCollider>().enabled = false;
+            //Lancer la musique
         }
     }
 }
