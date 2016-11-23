@@ -19,7 +19,7 @@ public class DoorActivate : MonoBehaviour {
         {
             Debug.Log("True");
             //Emmettre un effet sonore
-            door.GetComponent<AudioSource>().Play();
+            //door.GetComponent<AudioSource>().Play();
             //Supprimer la porte
             door.GetComponent<MeshRenderer>().enabled = false;
             door.GetComponent<BoxCollider>().enabled = false;

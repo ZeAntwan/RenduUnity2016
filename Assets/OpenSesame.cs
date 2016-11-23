@@ -4,6 +4,7 @@ using System.Collections;
 public class OpenSesame : MonoBehaviour {
 
     public bool Activate = false;
+    bool played = false;
     // Use this for initialization
     void Start () {
 
@@ -15,7 +16,11 @@ public class OpenSesame : MonoBehaviour {
 	    if (Activate == true)
         {
             //Emmettre un effet sonore
-            this.GetComponent<AudioSource>().Play();
+            if(this.GetComponent<AudioSource>().isPlaying == false && played == false)
+            {
+                this.GetComponent<AudioSource>().Play();
+                played = true;
+            }
             //Supprimer la porte
             this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;
