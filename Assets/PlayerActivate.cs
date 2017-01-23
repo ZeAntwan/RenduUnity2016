@@ -4,9 +4,11 @@ using System.Collections;
 public class PlayerActivate : MonoBehaviour {
     GameObject player;
     bool near = false;
+    bool played = false;
     bool activate = false;
     public static int TowerCount = 0;
     public OpenSesame DoorActivate;
+    public OpenSesame ZeEnd;
     Animator anim;
    
 	// Use this for initialization
@@ -30,11 +32,20 @@ public class PlayerActivate : MonoBehaviour {
             anim.SetBool("anim", true);
             // Empecher la réactivation de cette tour
             activate = true;
+            if(this.GetComponent<AudioSource>().isPlaying == false && played == false)
+            {
+                this.GetComponent<AudioSource>().Play();
+                played = true;
+            }
         }
 
-        if (TowerCount == 1)
+        if (TowerCount == 4)
         {
             DoorActivate.Activate = true;
+        }
+
+        if (TowerCount > 4 || Input.GetButtonDown("Fire3")) {
+            DoorActivate.ZeEnd = true;
         }
 
     }
